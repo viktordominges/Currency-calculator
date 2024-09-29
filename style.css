@@ -1,0 +1,144 @@
+body {
+    background-image: url('img/bg/bg_main.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.calculator {
+    padding: 30px 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 32px;
+}
+
+.container {
+    margin: 20px auto;
+    width: 800px;
+    border-color: black;
+}
+
+.calculator__tabs {
+    display: flex;
+    justify-content: center;
+    column-gap: 15px;
+    margin-top: 50px;
+    list-style-type: none;
+    padding: 0;
+    font-size: 18px;
+}
+
+.calculator__tab {
+    width: 200px;
+    height: 50px;
+    border: 1px solid gray;
+    border-radius: 10px 100px / 120px;
+    text-align: center;
+    line-height: 48px;
+    box-shadow: 12px 8px 8px gray;
+    background-color: ghostwhite;
+    cursor: pointer;
+}
+
+.calculator__tab_active {
+    box-shadow: 6px 4px 4px rgb(35, 67, 62);
+    background-color: rgb(15, 102, 74);
+    color: ghostwhite;
+    border: none;
+}
+
+.calculator__block {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 80px;
+}
+
+.calculator__content-input input {
+    border: none;
+    width: 250px;
+    height: 50px;
+    padding: 0 20px;
+    font-size: 18px;
+    background-color: #c4dcd1; /* Цвет для фона */
+    border-radius: 5px; /* Скругление углов */
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.2), /* Внутренняя тень (темная) */
+                inset -4px -4px 10px rgba(255, 255, 255, 0.2); /* Внутренняя тень (светлая) */
+    outline: none; /* Убираем стандартный outline */
+    transition: box-shadow 0.2s ease; /* Плавный переход */
+}
+
+.calculator__content-input input:focus {
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), /* Изменение тени при фокусе*/
+                inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.calculator__content-result input {
+    width: 250px;
+    height: 50px;
+    padding: 0 20px;
+    font-size: 18px;
+    border: none;
+    background-color: #c4dcd1; /* Цвет для фона */
+    border-radius: 5px; /* Скругление углов */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2),  /* Внешняя тень (темная) */
+                -4px -4px 10px rgba(255, 255, 255, 0.7); /* Внешняя тень (светлая) */
+    outline: none;
+    transition: box-shadow 0.2s ease;
+}
+
+.calculator__content-img {
+    text-align: center;
+}
+
+.arrow {
+    display: flex;
+    padding-top: 112px;
+    width: 135px; /* Увеличил ширину контейнера для лучшего отображения */
+ /* Изменил высоту для соответствия */
+}
+
+.arrow span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid #c4dcd1;
+    border-right: 5px solid #c4dcd1;
+    transform: rotate(-45deg); /* Изменил угол поворота на 135 градусов для стрелки, направленной вправо */
+    margin: 0; /* Убрали отрицательные значения для вертикального выравнивания */
+    animation: arrow 2s infinite;
+}
+
+.arrow span:nth-child(2) {
+    animation-delay: -0.2s;
+}
+
+.arrow span:nth-child(3) {
+    animation-delay: -0.4s;
+}
+
+@keyframes arrow {
+    0% {
+        opacity: 0;
+        transform: translate(-20px, 0) rotate(-45deg); /* Двигаем влево */
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(20px, 0) rotate(-45deg); /* Двигаем вправо */
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Currency calculator</title>
+</head>
+<body>
+    <section class="calculator">
+        <div class="container">
+            <h1 class="title">Currency calculator</h1>
+            <div class="calculator__choice">
+                <ul class="calculator__tabs">
+                    <li class="calculator__tab">Euro => USD</li>
+                    <li class="calculator__tab">USD => Euro</li>
+                </ul>
+            </div>
+           <div class="calculator__wrapper">
+                <div class="calculator__block">
+                    <div class="calculator__content">
+                        <div class="calculator__content-img">
+                            <img src="icons/Euro/Euro_100.png" alt="Euro">
+                        </div>
+                        <div class="calculator__content-input">
+                            <input id="euro" type="text" placeholder="Euro">
+                        </div>
+                    </div>
+                    <div class="arrow">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="calculator__content">
+                        <div class="calculator__content-img">
+                            <img src="icons/USD/USD_100.png" alt="USD">
+                        </div>
+                        <div class="calculator__content-result">
+                            <input id="usdResult" type="text" value="USD" placeholder="USD" disabled>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calculator__block">
+                    <div class="calculator__content">
+                        <div class="calculator__content-img">
+                            <img src="icons/USD/USD_100.png" alt="USD">
+                        </div>
+                        <div class="calculator__content-input">
+                            <input id="dollar" type="text" placeholder="USD">
+                        </div>
+                    </div>
+                    <div class="arrow">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="calculator__content">
+                        <div class="calculator__content-img">
+                            <img src="icons/Euro/Euro_100.png" alt="Euro">
+                        </div>
+                        <div class="calculator__content-result">
+                            <input id="euroResult" type="text" value="Euro" placeholder="Euro" disabled>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
