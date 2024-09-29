@@ -142,3 +142,12 @@ h1 {
 .show {
     display: flex;
 }
+
+/* Стили для подсветки ошибки */
+input.invalid {
+    border: 2px solid red;
+}
+
+input.valid {
+    border: none;
+}

@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.calculator__tab'),
           tabsContent = document.querySelectorAll('.calculator__block'),
           tabsParent = document.querySelector('.calculator__tabs');
+          currencyInput = document.querySelectorAll('.calculator__content-input');
 
     const hideTabContent = () => {
         tabsContent.forEach(item => {
@@ -18,6 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
         tabsContent[i].classList.remove('hide');
         tabsContent[i].classList.add('show');
         tabs[i].classList.add('calculator__tab_active');
+        currencyInput[i].children[0].focus();
     }
 
     hideTabContent();
@@ -40,27 +42,46 @@ window.addEventListener('DOMContentLoaded', () => {
         return currency === 'euro' ? sum * RATIO : sum / RATIO;
     };
 
-    // Универсальная функция для обработки ввода данных
     const handleInput = (inputId, outputId, currency) => {
         const inputElement = document.getElementById(inputId);  // исходное поле (ввод)
         const outputElement = document.getElementById(outputId); // поле для результата (вывод)
-        
-        // Получаем значение из исходного поля
-        const inputValue = parseFloat(inputElement.value);
-        
-        // Проверяем, является ли ввод корректным числом
-        if (!isNaN(inputValue)) {
-            // Вызываем calcTotal для расчета результата
-            const result = calcTotal(inputValue, currency);
-            
-            // Записываем результат в поле вывода
-            outputElement.value = result.toFixed(2); // округляем до двух знаков
-        } else {
-            outputElement.value = ''; // очищаем поле, если ввод некорректен
-        }
-    };
-
-    // Добавляем обработчики событий на оба инпута
-    document.getElementById('euro').addEventListener('input', () => handleInput('euro', 'usdResult', 'euro'));
-    document.getElementById('dollar').addEventListener('input', () => handleInput('dollar', 'euroResult', 'dollar'));
+    
+        // Обработчик события для ввода значений
+        inputElement.addEventListener('input', () => {
+            // Текущее значение поля ввода
+            let inputValue = inputElement.value;
+    
+            // Проверяем каждый символ и удаляем некорректные
+            if (!/^[0-9]*\.?[0-9]*$/.test(inputValue)) {
+                // Удаляем последний некорректный символ
+                inputElement.value = inputValue.slice(0, -1);
+                inputElement.classList.remove('valid');
+                inputElement.classList.add('invalid');
+                return; // Останавливаем дальнейшую обработку
+            }
+    
+            // Проверяем, что значение не пустое
+            if (inputValue !== "") {
+                inputElement.classList.remove('invalid');
+                inputElement.classList.add('valid');
+    
+                // Преобразуем строку в число для расчета
+                const parsedValue = parseFloat(inputValue);
+    
+                // Вызываем calcTotal для расчета результата
+                const result = calcTotal(parsedValue, currency);
+    
+                // Записываем результат в поле вывода
+                outputElement.value = result.toFixed(2); // округляем до двух знаков
+            } else {
+                // Очищаем поле результата, если ввод пустой
+                outputElement.value = '';
+                inputElement.classList.remove('invalid');
+                inputElement.classList.add('valid');
+            }
+        });
+    };    
+   
+   handleInput('euro', 'usdResult', 'euro');
+   handleInput('dollar', 'euroResult', 'dollar');
 });
